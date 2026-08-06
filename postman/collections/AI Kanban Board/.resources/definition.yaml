@@ -1,0 +1,10 @@
+$kind: collection
+name: AI Kanban Board
+variables:
+  - key: supabase_service_role_api_key_0ukc
+    secret: true
+    disabled: false
+auth:
+  - id: cbe95543-29eb-4b0f-9d03-49a8a5b5e7ff
+    type: bearer
+    name: Bearer Token

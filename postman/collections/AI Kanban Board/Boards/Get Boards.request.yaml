@@ -1,0 +1,16 @@
+$kind: http-request
+name: Get Boards
+url: http://localhost:5050/api/boards/35da3049-1c1a-4c15-b75c-69388383a37a
+method: GET
+headers:
+  - key: Authorization
+    value: Bearer $TOKEN
+    disabled: true
+    description: ""
+  - key: Content-Type
+    value: applicaction/json
+    disabled: false
+    description: ""
+auth:
+  type: bearer
+order: 2670519235522145
