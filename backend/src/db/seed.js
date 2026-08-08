@@ -7,12 +7,12 @@ const DAY = 86400000;
 const COLUMNS = ["Todo", "In Progress", "Review", "Done"];
 
 const USERS = [
-  { key: "alex", name: "Alex Rivera", email: "alex@timetoprogram.com" },
-  { key: "maya", name: "Maya Chen", email: "maya@timetoprogram.com" },
-  { key: "diego", name: "Diego Santos", email: "diego@timetoprogram.com" },
-  { key: "priya", name: "Priya Nair", email: "priya@timetoprogram.com" },
-  { key: "sam", name: "Sam Okafor", email: "sam@timetoprogram.com" },
-  { key: "lena", name: "Lena Fischer", email: "lena@timetoprogram.com" },
+  { key: "madhav", name: "Madhav", email: "madhav@example.com" },
+  { key: "maya", name: "Maya Khare", email: "maya@workspace.com" },
+  { key: "raj", name: "Raj", email: "raj@workspace.com" },
+  { key: "priya", name: "Priya Nair", email: "priya@workspace.com" },
+  { key: "sameer", name: "Sameer Shukla", email: "sameer@workspace.com" },
+  { key: "sam", name: "Sam Fischer", email: "sam@workspace.com" },
 ];
 
 const BOARDS = [
@@ -20,8 +20,8 @@ const BOARDS = [
     title: "Product Roadmap",
     description: "Quarterly planning, OKRs and feature prioritization.",
     color: "#2f8159",
-    owner: "alex",
-    members: ["maya", "diego", "priya"],
+    owner: "madhav",
+    members: ["maya", "raj", "priya"],
     updatedDaysAgo: 0.3,
     tasks: [
       "Define Q3 OKRs", "Prioritize feature backlog", "User interview synthesis",
@@ -34,8 +34,8 @@ const BOARDS = [
     title: "Mobile App Launch",
     description: "Ship the iOS & Android apps to the stores.",
     color: "#c26a45",
-    owner: "alex",
-    members: ["sam", "lena"],
+    owner: "madhav",
+    members: ["sameer", "sam"],
     updatedDaysAgo: 1.2,
     tasks: [
       "App store listing copy", "Push notification setup", "Crash reporting integration",
@@ -47,8 +47,8 @@ const BOARDS = [
     title: "Website Redesign",
     description: "Marketing site refresh with a new design language.",
     color: "#5f7da6",
-    owner: "alex",
-    members: ["lena", "diego"],
+    owner: "madhav",
+    members: ["sam", "raj"],
     updatedDaysAgo: 2.6,
     tasks: [
       "Wireframe homepage", "Design hero section", "Implement responsive nav",
@@ -59,8 +59,8 @@ const BOARDS = [
     title: "Marketing Q3",
     description: "Campaigns, content and growth experiments.",
     color: "#d4a23c",
-    owner: "alex",
-    members: ["diego", "priya"],
+    owner: "madhav",
+    members: ["raj", "priya"],
     updatedDaysAgo: 4,
     tasks: [
       "Launch email sequence", "Social media calendar", "Webinar planning",
@@ -71,8 +71,8 @@ const BOARDS = [
     title: "Design System",
     description: "Tokens, components and documentation.",
     color: "#2c9c8f",
-    owner: "alex",
-    members: ["lena", "maya"],
+    owner: "madhav",
+    members: ["sam", "maya"],
     updatedDaysAgo: 0.8,
     tasks: [
       "Token naming audit", "Button component", "Form primitives", "Theme tokens",
@@ -83,7 +83,7 @@ const BOARDS = [
     title: "Customer Onboarding",
     description: "Make the first-run experience delightful.",
     color: "#a05d7d",
-    owner: "alex",
+    owner: "madhav",
     members: ["priya"],
     updatedDaysAgo: 6,
     tasks: [
@@ -95,7 +95,7 @@ const BOARDS = [
     description: "Current two-week delivery sprint.",
     color: "#6f9b54",
     owner: "maya",
-    members: ["alex", "sam", "diego"],
+    members: ["madhav", "sameer", "raj"],
     updatedDaysAgo: 1.8,
     tasks: [
       "Refactor auth module", "Fix websocket reconnect", "Add rate limiting",
@@ -107,8 +107,8 @@ const BOARDS = [
     title: "Content Calendar",
     description: "Editorial pipeline for blog & newsletter.",
     color: "#4f9d82",
-    owner: "diego",
-    members: ["alex", "priya"],
+    owner: "raj",
+    members: ["madhav", "priya"],
     updatedDaysAgo: 9,
     tasks: ["Blog: AI in product management", "Newsletter #14", "Customer spotlight: Acme"],
   },
@@ -149,7 +149,7 @@ const run = async () => {
       const boardId = br[0].id;
 
       let memberKeys = [b.owner, ...b.members];
-      if (!memberKeys.includes("alex")) memberKeys.push("alex");
+      if (!memberKeys.includes("madhav")) memberKeys.push("madhav");
       memberKeys = [...new Set(memberKeys)];
 
       for (let mi = 0; mi < memberKeys.length; mi++) {
@@ -171,7 +171,7 @@ const run = async () => {
         colIds.push(cr[0].id);
       }
 
-      const assignPool = ["alex", "alex", ...memberKeys];
+      const assignPool = ["madhav", "madhav", ...memberKeys];
 
       for (let i = 0; i < b.tasks.length; i++) {
         const colIdx = COL_CYCLE[i % COL_CYCLE.length];
@@ -222,7 +222,7 @@ const run = async () => {
     .then((taskTotal) => {
       console.log("✅ Demo workspace seeded.");
       console.log(`   Users: ${USERS.length} · Boards: ${BOARDS.length} · Tasks: ${taskTotal}`);
-      console.log('   Login: alex@timetoprogram.com / Test@1234');
+      console.log('   Login: madhav@example.com / Test@1234');
       console.log('   (teammates share the same password)');
     });
 };

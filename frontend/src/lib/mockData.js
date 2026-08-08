@@ -15,39 +15,39 @@ const PRIORITIES = ["low", "medium", "high", "urgent"];
 
 /* ----------------------------------- users ----------------------------------- */
 export const currentUser = {
-  id: "u-alex",
-  name: "Alex Rivera",
-  email: "alex@timetoprogram.com",
+  id: "u-madhav",
+  name: "Madhav",
+  email: "madhav@example.com",
   avatar_url: null,
   created_at: iso(-60),
 };
 
 const team = [
   currentUser,
-  { id: "u-maya", name: "Maya Chen", email: "maya@timetoprogram.com", avatar_url: null },
-  { id: "u-diego", name: "Diego Santos", email: "diego@timetoprogram.com", avatar_url: null },
-  { id: "u-priya", name: "Priya Nair", email: "priya@timetoprogram.com", avatar_url: null },
-  { id: "u-sam", name: "Sam Okafor", email: "sam@timetoprogram.com", avatar_url: null },
-  { id: "u-lena", name: "Lena Fischer", email: "lena@timetoprogram.com", avatar_url: null },
+  { id: "u-maya", name: "Maya Khare", email: "maya@workspace.com", avatar_url: null },
+  { id: "u-raj", name: "Raj", email: "raj@workspace.com", avatar_url: null },
+  { id: "u-priya", name: "Priya Nair", email: "priya@workspace.com", avatar_url: null },
+  { id: "u-sameer", name: "Sameer Shukla", email: "sameer@workspace.com", avatar_url: null },
+  { id: "u-sam", name: "Sam Fischer", email: "sam@workspace.com", avatar_url: null },
 ];
 const byId = Object.fromEntries(team.map((u) => [u.id, u]));
 
 /* ---------------------------------- boards ----------------------------------- */
 const boardMetas = [
-  { id: "b-roadmap", title: "Product Roadmap", description: "Quarterly planning, OKRs and feature prioritization.", color: "#2f8159", owner: "u-alex", members: ["u-maya", "u-diego", "u-priya"], updatedDaysAgo: 0.3,
+  { id: "b-roadmap", title: "Product Roadmap", description: "Quarterly planning, OKRs and feature prioritization.", color: "#2f8159", owner: "u-madhav", members: ["u-maya", "u-raj", "u-priya"], updatedDaysAgo: 0.3,
     titles: ["Define Q3 OKRs", "Prioritize backlog", "User interview synthesis", "Pricing experiment", "Competitor analysis", "Roadmap review", "Define success metrics", "Beta feedback triage", "Planning deck", "Stakeholder alignment"] },
-  { id: "b-mobile", title: "Mobile App Launch", description: "Ship the iOS & Android apps to the stores.", color: "#c26a45", owner: "u-alex", members: ["u-sam", "u-lena"], updatedDaysAgo: 1.2,
+  { id: "b-mobile", title: "Mobile App Launch", description: "Ship the iOS & Android apps to the stores.", color: "#c26a45", owner: "u-madhav", members: ["u-sameer", "u-lena"], updatedDaysAgo: 1.2,
     titles: ["App store listing", "Push notifications", "Crash reporting", "Onboarding screens", "TestFlight beta", "Performance profiling", "Deep linking", "Release checklist"] },
-  { id: "b-website", title: "Website Redesign", description: "Marketing site refresh with a new design language.", color: "#5f7da6", owner: "u-alex", members: ["u-lena", "u-diego"], updatedDaysAgo: 2.6,
+  { id: "b-website", title: "Website Redesign", description: "Marketing site refresh with a new design language.", color: "#5f7da6", owner: "u-madhav", members: ["u-lena", "u-raj"], updatedDaysAgo: 2.6,
     titles: ["Wireframe homepage", "Design hero section", "Responsive nav", "Migrate blog content", "SEO audit", "Accessibility pass", "Lighthouse optimization"] },
-  { id: "b-marketing", title: "Marketing Q3", description: "Campaigns, content and growth experiments.", color: "#d4a23c", owner: "u-alex", members: ["u-diego", "u-priya"], updatedDaysAgo: 4,
+  { id: "b-marketing", title: "Marketing Q3", description: "Campaigns, content and growth experiments.", color: "#d4a23c", owner: "u-madhav", members: ["u-raj", "u-priya"], updatedDaysAgo: 4,
     titles: ["Launch email sequence", "Social calendar", "Webinar planning", "Case study writeup", "Ad creative refresh"] },
-  { id: "b-design", title: "Design System", description: "Tokens, components and documentation.", color: "#2c9c8f", owner: "u-alex", members: ["u-lena", "u-maya"], updatedDaysAgo: 0.8,
+  { id: "b-design", title: "Design System", description: "Tokens, components and documentation.", color: "#2c9c8f", owner: "u-madhav", members: ["u-lena", "u-maya"], updatedDaysAgo: 0.8,
     titles: ["Token naming audit", "Button component", "Form primitives", "Theme tokens", "Icon set cleanup", "Documentation site"] },
-  // shared with Alex (owned by teammates)
-  { id: "b-eng", title: "Engineering Sprint", description: "Current two-week delivery sprint.", color: "#6f9b54", owner: "u-maya", members: ["u-alex", "u-sam", "u-diego"], updatedDaysAgo: 1.8,
+  // shared with Madhav (owned by teammates)
+  { id: "b-eng", title: "Engineering Sprint", description: "Current two-week delivery sprint.", color: "#6f9b54", owner: "u-madhav", members: ["u-madhav", "u-sameer", "u-raj"], updatedDaysAgo: 1.8,
     titles: ["Refactor auth module", "Fix websocket reconnect", "Add rate limiting", "Database index tuning", "API pagination", "Integration tests", "Upgrade Node 22", "Cache layer"] },
-  { id: "b-content", title: "Content Calendar", description: "Editorial pipeline for blog & newsletter.", color: "#4f9d82", owner: "u-diego", members: ["u-alex", "u-priya"], updatedDaysAgo: 9,
+  { id: "b-content", title: "Content Calendar", description: "Editorial pipeline for blog & newsletter.", color: "#4f9d82", owner: "u-madhav", members: ["u-madhav", "u-priya"], updatedDaysAgo: 9,
     titles: ["Blog: AI in PM", "Newsletter #14", "Customer spotlight"] },
 ];
 
@@ -65,7 +65,7 @@ const attachAssignee = (task, user) => ({
 const buildDetail = (meta) => {
   const ownerId = byId[meta.owner].id;
   let memberKeys = [meta.owner, ...meta.members];
-  if (!memberKeys.includes("u-alex")) memberKeys.push("u-alex");
+  if (!memberKeys.includes("u-madhav")) memberKeys.push("u-madhav");
   memberKeys = [...new Set(memberKeys)];
 
   const members = memberKeys.map((k, i) => ({
@@ -82,7 +82,7 @@ const buildDetail = (meta) => {
     created_at: iso(-45),
   }));
 
-  const assignPool = ["u-alex", "u-alex", ...memberKeys];
+  const assignPool = ["u-madhav", "u-madhav", ...memberKeys];
   const tasks = meta.titles.map((title, i) => {
     const col = columns[COL_CYCLE[i % COL_CYCLE.length]];
     const off = DUE_CYCLE[i % DUE_CYCLE.length];
@@ -115,7 +115,7 @@ const buildDetail = (meta) => {
     updated_at: iso(-meta.updatedDaysAgo),
   };
 
-  return { board, columns, tasks, members, role: meta.owner === "u-alex" ? "owner" : "member" };
+  return { board, columns, tasks, members, role: meta.owner === "u-madhav" ? "owner" : "member" };
 };
 
 // Pre-build every board's detail and keep it in a map (so created boards persist
@@ -131,7 +131,7 @@ export const boards = boardMetas
     const d = details[m.id];
     return {
       ...d.board,
-      is_owner: m.owner === "u-alex",
+      is_owner: m.owner === "u-madhav",
       task_count: d.tasks.length,
       member_count: d.members.length,
     };
@@ -234,16 +234,16 @@ export const activitiesFor = (boardId) => {
   const d = details[boardId] || {};
   const names = (d.members || [currentUser]).map((m) => m.name);
   const samples = [
-    { action: "task.created", message: `${names[0] || "Alex"} created "${d.tasks?.[0]?.title || "a task"}"` },
+    { action: "task.created", message: `${names[0] || "Madhav"} created "${d.tasks?.[0]?.title || "a task"}"` },
     { action: "task.moved", message: `${names[1] || "Maya"} moved "${d.tasks?.[1]?.title || "a task"}" to Done` },
-    { action: "member.added", message: `${names[0] || "Alex"} added ${names[2] || "Diego"} to the board` },
+    { action: "member.added", message: `${names[0] || "Madhav"} added ${names[2] || "raj"} to the board` },
     { action: "task.updated", message: `${names[1] || "Maya"} updated a task's priority` },
   ];
   return samples.map((a, i) => ({
     id: uid("act"),
     board_id: boardId,
     user_id: (d.members?.[i % (d.members?.length || 1)] || currentUser).id,
-    user_name: names[i % names.length] || "Alex",
+    user_name: names[i % names.length] || "Madhav",
     user_avatar: null,
     action: a.action,
     message: a.message,

@@ -26,13 +26,17 @@ const COLUMN_ACCENTS = [
 export const columnAccent = (index = 0) =>
   COLUMN_ACCENTS[((index % COLUMN_ACCENTS.length) + COLUMN_ACCENTS.length) % COLUMN_ACCENTS.length];
 
-export const initials = (name = "") =>
-  name
-    .trim()
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((w) => w[0]?.toUpperCase())
-    .join("") || "?";
+export const initials = (name) => {
+  if (!name || typeof name !== "string") return "?";
+  return (
+    name
+      .trim()
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((w) => w[0]?.toUpperCase())
+      .join("") || "?"
+  );
+};
 
 /** Deterministic avatar color from a string id — earthy palette to match the green theme. */
 export const colorFromId = (id = "") => {
